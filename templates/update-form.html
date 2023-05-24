@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <title>Update employee</title>
+    <link rel="stylesheet" href="cssFiles/update.css" />
+  </head>
+
+  <body>
+    <form
+      action="#"
+      th:action="@{/crud/update/{id}(id=${employee.id})}"
+      th:object="${employee}"
+      method="post"
+      class="container"
+    >
+      <h1 class="header">UPDATE EMPLOYEE</h1>
+
+      <input
+        type="text"
+        th:field="*{firstName}"
+        id="employee.firstName"
+        placeholder="First Name"
+      />
+
+      <input
+        type="text"
+        th:field="*{lastName}"
+        id="lastName"
+        placeholder="Last Name"
+      />
+
+      <input type="text" th:field="*{email}" id="email" placeholder="Email" />
+
+      <button type="submit" th:text="Dalej" class="btn">Update</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="cssFiles/registerStyle.css" />
+    <title>YuroDeeps</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <article>
+        <form
+          th:action="@{/register}"
+          th:object="${userDTO}"
+          method="POST"
+          enctype="UTF-8"
+          class="register"
+        >
+          <h1 th:text="form" class="register-label">SIGN UP</h1>
+          <div class="register-element">
+            <input
+              type="username"
+              name="username"
+              class="form-control login-input"
+              placeholder="Username"
+              required
+            />
+            <div
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}"
+            ></div>
+          </div>
+          <div class="register-element">
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              th:value="*{email}"
+              th:errorClass="is-invalid"
+              required
+              placeholder="E-mail"
+            />
+            <div
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"
+            ></div>
+          </div>
+          <div class="register-element">
+            <input
+              type="password"
+              name="password"
+              class="form-control password login-input"
+              placeholder="Password"
+              required
+            />
+            <div
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"
+            ></div>
+          </div>
+          <div class="register-element">
+            <input
+              type="password"
+              class="form-control"
+              name="rpassword"
+              th:value="*{rpassword}"
+              th:errorClass="is-invalid"
+              required
+              placeholder="Re-password"
+            />
+
+            <div
+              th:if="${#fields.hasErrors('rpassword')}"
+              th:errors="*{rpassword}"
+            ></div>
+          </div>
+          <button type="submit" th:text="Dalej" class="submit-button">
+            Sign up
+          </button>
+          <p class="already">
+            Already have an account? <a href="/login">Sign in.</a>
+          </p>
+        </form>
+      </article>
+    </div>
+  </body>
+</html>

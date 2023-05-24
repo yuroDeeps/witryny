@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Login</title>
+    <link rel="stylesheet" href="cssFiles/loginStyle.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form th:action="@{/login}" method="post" class="login">
+        <div class="header">
+          <h2>Sign in to Yuro App</h2>
+
+          <div th:if="${param.error}" class="error-login">
+            <p class="">
+              [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+            </p>
+          </div>
+        </div>
+
+        <input
+          type="username"
+          name="username"
+          class="form-control login-input"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          class="form-control password login-input"
+          placeholder="Password"
+          required
+        />
+        <div class="bottom">
+          <input type="submit" value="SIGN IN" class="btn btn-primary" />
+          <p class="under-btn">
+            You don't have account?
+            <a href="/register" class="text-link">Sign up!</a>
+          </p>
+          <a href="/forgotPassword" class="forgot">I forgot my password</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
